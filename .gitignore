@@ -133,3 +133,4 @@ dmypy.json
 #datasets
 datasets/CIFAR-FS/
 datasets/FC100/
+datasets/mini-imagenet/
