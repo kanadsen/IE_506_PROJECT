@@ -63,9 +63,9 @@ class EpisodeSampler():
         label = np.array(label)
         self.m_ind = []
         for i in range(max(label) + 1):
-            ind = np.argwhere(label == i).reshape(-1)
+            ind = np.argwhere(label == i).reshape(-1) # Get indices of the images of label==i
             ind = torch.from_numpy(ind)
-            self.m_ind.append(ind)
+            self.m_ind.append(ind) # A 2 D array consisting of array of indices of images containing for all labels
 
     def __len__(self):
         return self.n_episodes
@@ -99,6 +99,7 @@ def loadSplit(splitFile):
                     else:
                         dictLabels[label] = [filename]
             return dictLabels
+
 
 class EmbeddingDataset(Dataset):
 

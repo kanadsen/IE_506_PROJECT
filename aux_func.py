@@ -8,11 +8,15 @@ which are the true labels for the given inputs.
 
 
 '''
-def NL_loss(f, labels):
+def NL_loss(f,labels, global_negative_pred):
     Q_1 = 1 - F.softmax(f, dim=1) # softmax of f
     Q = F.softmax(Q_1, dim=1)
     weight = 1 - Q
+    print(weight,weight.shape)
+    for i in global_negative_pred:
+        weight[i]=0
     out = weight * torch.log(Q)
+    print("Output of NL_loss:",out)
     return F.nll_loss(out, labels)
 
 # The entropy_loss function measures the entropy of the predicted probability distribution. 
